@@ -23,12 +23,14 @@ object brotli extends PublishModule {
   /** Custom task to clean out/brotli */
   def clean() = T.command{
     def delete(file: File): Unit = {
-      if (file.exists && file.getPath != "./out/lib")
-        Option(file.listFiles).map(_.toList).getOrElse(Nil).foreach(delete)
-      file.delete
+      if (file.exists)
+        if (file.isDirectory)
+          Option(file.listFiles).map(_.toList).getOrElse(Nil).foreach(delete)
+        else file.delete()
+
     }
 
-    delete(new File("./out/"))
+    delete(new File("./out/brotli"))
   }
 
   /** Name of project */
