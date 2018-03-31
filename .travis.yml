@@ -7,7 +7,7 @@ notifications:
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y assembly
+  - sudo apt-get install -y mill
 
 script:
  - mill brotli.assembly
