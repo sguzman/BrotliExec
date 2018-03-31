@@ -34,13 +34,16 @@ object brotli extends ScalaModule {
     MavenRepository("https://jcenter.bintray.com")
   )
 
+  /** Test suite */
+  object test extends Tests{
+    def ivyDeps = Agg(ivy"org.scalatest::scalatest:3.2.0-SNAP10")
+    def testFrameworks = Seq("org.scalatest.tools.Runner")
+  }
+
   /** Ivy dependencies */
   def ivyDeps = Agg(
-    ivy"com.outr::scribe:2.3.1",
-    ivy"org.scalatest::scalatest:3.2.0-SNAP10"
+    ivy"com.outr::scribe:2.3.1"
   )
-
-  def testFrameworks = Seq("org.scalatest.tools.Runner")
 
   /** Scala compiler plugins */
   //def scalacPluginIvyDeps = Agg()
