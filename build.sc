@@ -2,6 +2,7 @@ import mill._
 import mill.scalalib._
 import coursier.maven.MavenRepository
 import publish._
+import java.io.File
 
 object brotli extends PublishModule {
   /** Publish version */
@@ -20,14 +21,14 @@ object brotli extends PublishModule {
   )
 
   /** Custom task to clean out/brotli */
-  def clean = T.command{
-    def delete(file: File) {
-      if (file.exists && file.isDirectory)
-        Option(file.listFiles).map(_.toList).getOrElse(Nil).foreach(delete(_))
+  def clean() = T.command{
+    def delete(file: File): Unit = {
+      if (file.exists && file.getPath != "./out/lib")
+        Option(file.listFiles).map(_.toList).getOrElse(Nil).foreach(delete)
       file.delete
     }
 
-    delete(new File("./out/brotli/"))
+    delete(new File("./out/"))
   }
 
   /** Name of project */
