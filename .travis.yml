@@ -6,7 +6,7 @@ notifications:
     slack: initialcommitio:QadMr0XToU1nr1dteV5nYFpW
 
 before_install:
-  - sudo curl -L -o ./mill
+  - sudo curl -L -o ./mill https://github.com/lihaoyi/mill/releases/download/0.1.7/0.1.7
   - sudo chmod +x ./mill
 
 
