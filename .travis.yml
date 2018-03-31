@@ -6,8 +6,9 @@ notifications:
     slack: initialcommitio:QadMr0XToU1nr1dteV5nYFpW
 
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y mill
+  - sudo curl -L -o ./mill
+  - sudo chmod +x ./mill
+
 
 script:
- - mill brotli.assembly
+ - ./mill brotli.assembly
