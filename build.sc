@@ -36,7 +36,8 @@ object brotli extends ScalaModule {
 
   /** Ivy dependencies */
   def ivyDeps = Agg(
-    ivy"com.outr::scribe:2.3.1"
+    ivy"com.outr::scribe:2.3.1",
+    ivy"org.scalatest::scalatest:3.2.0-SNAP10"
   )
 
   /** Scala compiler plugins */
