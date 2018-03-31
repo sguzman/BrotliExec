@@ -5,6 +5,9 @@ import publish._
 
 object brotli extends PublishModule {
 
+  /** Publish version */
+  def publishVersion = "1.0.0"
+
   /** Define maven POM for publishing */
   def pomSettings = PomSettings(
     description = "Exec wrapper to local brotli executable for compression and decompression",
