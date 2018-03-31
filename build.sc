@@ -1,7 +1,21 @@
 import mill._
 import mill.scalalib._
 import coursier.maven.MavenRepository
-object brotli extends ScalaModule {
+import publish._
+
+object brotli extends PublishModule {
+
+  /** Define maven POM for publishing */
+  def pomSettings = PomSettings(
+    description = "Exec wrapper to local brotli executable for compression and decompression",
+    organization = "com.github.sguzman",
+    url = "https://github.com/sguzman/BrotliExec",
+    licenses = Seq(License.Unlicense),
+    versionControl = VersionControl.github("sguzman", "BrotliExec"),
+    developers = Seq(
+      Developer("sguzman", "Salvador Guzman","https://github.com/sguzman")
+    )
+  )
 
   /** Name of project */
   def name = "brotliexec"
