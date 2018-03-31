@@ -1,7 +1,7 @@
 import mill._
 import mill.scalalib._
 import coursier.maven.MavenRepository
-object milltest extends ScalaModule {
+object brotli extends ScalaModule {
   /** Name of project */
   def name = "brotliexec"
 
