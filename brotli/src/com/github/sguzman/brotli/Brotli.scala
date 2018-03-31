@@ -1,8 +1,10 @@
 package com.github.sguzman.brotli
 
-import java.io.{DataInputStream, DataOutputStream}
+import java.io.{DataInputStream, DataOutputStream, EOFException}
 
+import scala.collection.mutable
 import scala.sys.process._
+import scala.util.{Failure, Success}
 
 // Thanks to some stackoverflow answer i found
 // will put it here when i find it
@@ -10,7 +12,7 @@ object Brotli {
   def compress(s: String): Array[Byte] = {
 
     locally {
-      var output: Array[Byte] = null
+      var output = mutable.ArrayBuffer[Byte]()
       val cmd = "brotli"
       val proc = cmd.run(new ProcessIO(
         in => {
@@ -20,8 +22,18 @@ object Brotli {
         },
         out => {
           val src = new DataInputStream(out)
-          output = src.readAllBytes
-          src.close()
+          def readUntilExhaust: Unit = {
+            util.Try(src.readByte) match {
+              case Success(v) =>
+                output.append(v)
+                readUntilExhaust
+              case Failure(e) => e match {
+                case _: EOFException => src.close()
+              }
+            }
+          }
+
+          readUntilExhaust
         },
         _.close()
       ))
@@ -31,7 +43,7 @@ object Brotli {
         throw new Exception(s"Subprocess exited with code $code.")
       }
 
-      output
+      output.toArray
     }
   }
 
