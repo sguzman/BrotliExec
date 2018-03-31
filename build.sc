@@ -4,7 +4,6 @@ import coursier.maven.MavenRepository
 import publish._
 
 object brotli extends PublishModule {
-
   /** Publish version */
   def publishVersion = "1.0.0"
 
@@ -19,6 +18,17 @@ object brotli extends PublishModule {
       Developer("sguzman", "Salvador Guzman","https://github.com/sguzman")
     )
   )
+
+  /** Custom task to clean out/brotli */
+  def clean = T.command{
+    def delete(file: File) {
+      if (file.exists && file.isDirectory)
+        Option(file.listFiles).map(_.toList).getOrElse(Nil).foreach(delete(_))
+      file.delete
+    }
+
+    delete(new File("./out/brotli/"))
+  }
 
   /** Name of project */
   def name = "brotliexec"
