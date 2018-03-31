@@ -2,8 +2,6 @@ import mill._
 import mill.scalalib._
 import coursier.maven.MavenRepository
 object brotli extends ScalaModule {
-  /** Main class */
-  def mainClass = Some("com.github.sguzman.brotli.BrotliDriver")
 
   /** Name of project */
   def name = "brotliexec"
@@ -44,8 +42,7 @@ object brotli extends ScalaModule {
 
   /** Ivy dependencies */
   def ivyDeps = Agg(
-    ivy"com.outr::scribe:2.2.1",
-    ivy"com.github.scopt::scopt:3.7.0"
+    ivy"com.outr::scribe:2.2.1"
   )
 
   /** Scala compiler plugins */
