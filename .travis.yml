@@ -10,7 +10,7 @@ notifications:
 
 before_install:
   - sudo curl -L -o ./brotli.deb http://launchpadlibrarian.net/330403601/brotli_0.6.0-1build1_amd64.deb
-  - sudo dpkg -i ./broli.deb
+  - sudo dpkg -i ./brotli.deb
   - sudo curl -L -o ./mill https://github.com/lihaoyi/mill/releases/download/0.1.7/0.1.7
   - sudo chmod +x ./mill
 
