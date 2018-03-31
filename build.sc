@@ -2,6 +2,9 @@ import mill._
 import mill.scalalib._
 import coursier.maven.MavenRepository
 object brotli extends ScalaModule {
+  /** Main class */
+  def mainClass = Some("com.github.sguzman.brotli.BrotliDriver")
+
   /** Name of project */
   def name = "brotliexec"
 
@@ -13,9 +16,6 @@ object brotli extends ScalaModule {
 
   /** Scala version */
   def scalaVersion = "2.12.4"
-
-  /** Define Main */
-  def mainClass = Some("com.github.sguzman.scraper.stream.lord.Main")
 
   /** Scalac parameters */
   def scalacOptions = Seq("-Ydelambdafy:inline", "-feature", "-unchecked", "-deprecation", "-encoding", "utf8")
