@@ -36,8 +36,10 @@ object brotli extends ScalaModule {
 
   /** Test suite */
   object test extends Tests{
-    def ivyDeps = Agg(ivy"org.scalatest::scalatest:3.2.0-SNAP10")
-    def testFrameworks = Seq("org.scalatest.tools.Runner")
+    /** Test Framework */
+    def testFrameworks = Seq("org.scalatest.tools.Framework")
+    /** Ivy dependencies */
+    def ivyDeps = Agg(ivy"org.scalatest::scalatest:3.0.4")
   }
 
   /** Ivy dependencies */
