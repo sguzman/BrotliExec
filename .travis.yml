@@ -11,4 +11,4 @@ before_install:
 
 
 script:
- - ./mill brotli.assembly
+ - ./mill brotli.{compile,test,assembly}
