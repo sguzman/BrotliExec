@@ -6,6 +6,8 @@ notifications:
     slack: initialcommitio:QadMr0XToU1nr1dteV5nYFpW
 
 before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y brotli
   - sudo curl -L -o ./mill https://github.com/lihaoyi/mill/releases/download/0.1.7/0.1.7
   - sudo chmod +x ./mill
 
