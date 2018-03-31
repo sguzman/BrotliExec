@@ -41,7 +41,7 @@ object brotli extends ScalaModule {
 
   /** Scala compiler plugins */
   def scalacPluginIvyDeps = Agg(
-    ivy"org.scoverage::sbt-scoverage:1.6.0-M2"
+    ivy"org.scoverage::sbt-scoverage:1.6.0-M3"
   )
 
   def forkArgs = Seq("-Xmx4g")
