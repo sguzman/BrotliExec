@@ -40,6 +40,8 @@ object brotli extends ScalaModule {
     ivy"org.scalatest::scalatest:3.2.0-SNAP10"
   )
 
+  def testFrameworks = Seq("org.scalatest.tools.Runner")
+
   /** Scala compiler plugins */
   //def scalacPluginIvyDeps = Agg()
 
