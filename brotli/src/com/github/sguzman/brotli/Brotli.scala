@@ -1,7 +1,6 @@
 package com.github.sguzman.brotli
 
 import java.io.{DataInputStream, DataOutputStream}
-import scribe
 
 import scala.sys.process._
 
@@ -9,7 +8,6 @@ import scala.sys.process._
 // will put it here when i find it
 object Brotli {
   def compress(s: String): Array[Byte] = {
-    scribe.info("Compressing with Brotli...")
 
     locally {
       var output: Array[Byte] = null
@@ -33,14 +31,12 @@ object Brotli {
         throw new Exception(s"Subprocess exited with code $code.")
       }
 
-      scribe.info("Compressed string")
       output
     }
   }
 
   def decompress(s: Array[Byte]): String = {
     locally {
-      scribe.info("Decompressing brotli...")
       var output: String = ""
       val cmd = "brotli -d"
       val proc = cmd.run(new ProcessIO(
@@ -62,7 +58,6 @@ object Brotli {
         throw new Exception(s"Subprocess exited with code $code.")
       }
 
-      scribe.info("Decompressed volume")
       output
     }
   }
