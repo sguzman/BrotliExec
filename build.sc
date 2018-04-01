@@ -71,9 +71,7 @@ object brotli extends PublishModule {
   }
 
   /** Ivy dependencies */
-  def ivyDeps = Agg(
-    ivy"com.outr::scribe:2.2.1"
-  )
+  //def ivyDeps = Agg()
 
   /** Scala compiler plugins */
   //def scalacPluginIvyDeps = Agg()

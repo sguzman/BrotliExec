@@ -11,7 +11,6 @@ import scala.util.{Failure, Success}
 object Brotli {
   def compress(s: String): Array[Byte] = {
     locally {
-      scribe.info("Compressing text...")
 
       var output = mutable.ArrayBuffer[Byte]()
       val cmd = "brotli"
@@ -44,14 +43,12 @@ object Brotli {
         throw new Exception(s"Subprocess exited with code $code.")
       }
 
-      scribe.info("Compressed text")
       output.toArray
     }
   }
 
   def decompress(s: Array[Byte]): String = {
     locally {
-      scribe.info("Decompressing byte array...")
 
       var output: String = ""
       val cmd = "brotli -d"
@@ -74,7 +71,6 @@ object Brotli {
         throw new Exception(s"Subprocess exited with code $code.")
       }
 
-      scribe.info("Decompressed byte array")
       output
     }
   }
